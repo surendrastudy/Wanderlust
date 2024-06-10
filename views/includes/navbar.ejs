@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      
+        <div class="navbar-nav  Explore-nav">
+          <a class="nav-link "  href="/listings">Explore</a>
+        </div>
+        <div class="navbar-nav ms-auto search-nav"  >
+          <form class="d-flex" role="search" method="post" action="/listings/search">
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" name="country" >
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
+          <a href="/booking/watch" class="nav-link" >Watchlist</a>
+          <% if(!currUser){ %>
+          <a class="nav-link "  href="/signup"><b> Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+          <% } %>
+
+          <% if(currUser){ %>
+          <a class="nav-link" href="/logout">Log out</a>
+          <a href="/booking/cart" class="nav-link" > <i class="fa-solid fa-cart-shopping"></i></a>
+          <% } %>
+
+        </div>
+        <% if(currUser&&currUser.username.length<5){ %>
+          <div  class="user">
+            <a href="/listings/<%= currUser._id%>/UserListing" >
+          <div class="navbar-nav  user2"  > 
+            <p ><%= currUser.username %></p>
+          </div>
+        </a>
+        </div>
+        <% } %>
+        <% if(currUser&&currUser.username.length>=5){ %>
+          <div  class="user">
+            <a href="/listings/<%= currUser._id%>/UserListing" >
+          <div class="navbar-nav  user2"  > 
+            <p ><i class="fa-solid fa-user"></i></p>
+          </div>
+        </a>
+        </div>
+        <% } %>
+
+      </div>
+    </div>
+</nav>

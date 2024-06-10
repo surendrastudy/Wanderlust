@@ -1,0 +1,45 @@
+<% layout("layouts/boilerPlate") %>
+
+<div class="row mt-3">
+    <div class="col-8 offset-3" >
+        <h3><%= listing.title  %></h3>
+    </div> 
+   
+    <div class="card custom-card col-6 offset-3 show-card" >
+        <img src="<%= listing.image.url%>" class="card-img-top show-image" alt="Listing_image">
+        <div class="card-body mb-3">
+          <p class="card-text"> &#8377;<%= listing.price.toLocaleString('en-IN') %> /night </p> 
+          <p class="card-text"> <%= listing.location  %></p>
+          <p class="card-text"> <%= listing.country  %></p>    
+       </div>
+       <form action="/booking/<%= listing._id %>/book?_method=PUT" method="post" novalidate class="needs-validation">
+        <div class="row">
+
+        <div class="mb-3 col-md-5">
+            <label for="price" class="form-label"> Date & Time From </label>
+            <input type="datetime-local" name="Listing[dateFrom]"  class="form-control" required>
+            <div class="invalid-feedback">
+            Date and Time Should be valid !
+            </div>
+        </div>
+            
+        <div class="mb-3 col-md-6">
+            <label for="country" class="form-label"> To</label>
+            <input type="datetime-local" name="Listing[dateTo]" value="" class="form-control" required>
+            <div class="invalid-feedback">
+                Date and Time Should be valid !
+            </div>
+        </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label"> For More Facilities</label>
+            <textarea name="Listing[bookingFacilities]" id="" cols="30" rows="5"  class="form-control" required></textarea>
+            <div class="invalid-feedback">
+                please enter a short Facilities
+            </div>
+        </div>
+        <button class="btn edit-btn btn-danger mb-3">Book</button>
+        </form>
+    </div> 
+
+</div>

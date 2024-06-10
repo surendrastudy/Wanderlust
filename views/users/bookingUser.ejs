@@ -1,0 +1,52 @@
+<% layout("layouts/boilerPlate") %>
+
+<div class="row mt-3 mb-3 booking-user-font">
+    <div class="row mt-3 mb-3">
+        <div class="col-8 offset-3 mb-3">
+            <h3>User Details</h3>
+        </div> 
+    </div>
+    <div class="card custom-card col-6 offset-3 show-card booking-user-font">
+        <div class="mb-3">
+            <b>UserName :</b>
+            <%= user.username %>
+        </div>
+
+        <div class="mb-3">
+            <b>Email :</b>
+            <%= user.email %>
+        </div>
+
+        <% if (listings.length > 0 && listings[0].bookings.length > 0) { %>
+            <% let booking = listings[0].bookings[0]; %>
+            <div class="mb-3">
+                <b>Date From :</b>
+                <% const formattedDateFrom = new Date(booking.dateFrom).toLocaleString(); %>
+                <%= formattedDateFrom %>
+            </div>
+
+            <div class="mb-3">
+                <b>Date To :</b>
+                <% const formattedDateTo = new Date(booking.dateTo).toLocaleString(); %>
+                <%= formattedDateTo %>
+            </div>
+            <div class="mb-3">
+                <b>Facilities:</b>
+                <%= booking.bookingFacilities %>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <a href="/booking/<%= listings[0]._id %>/ownercancel?userId=<%= booking.user._id %>" class="btn btn-danger">Completed</a>
+                </div>
+                <div class="mb-3 col-md-8">
+                    <a href="/booking/cart" class="btn btn-success">Back To page</a>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="mb-3">
+                No bookings found for this user.
+            </div>
+        <% } %>
+    </div>
+</div>
