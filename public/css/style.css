@@ -328,7 +328,7 @@ body{
         font-size: 0.8rem;
       }
       
-.booking-user-font ,.booking-user-font b{
+.booking-user-font ,.booking-user-font b, .cancel-btn{
     font-size: 0.78rem;
 }
 }   

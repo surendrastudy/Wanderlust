@@ -35,7 +35,7 @@
   </div>
   <% } else if (currUser && listing.bookings && listing.bookings.some(booking => booking.user.equals(currUser._id))) { %>
     <div class="btns mt-3">
-    <a href="/booking/<%= listing._id%>/drop" class="btn btn-danger col-2 edit-ancor	 offset-3">Cancel </a>
+    <a href="/booking/<%= listing._id%>/drop" class="btn btn-danger col-2 edit-ancor cancel-btn	 offset-3">Cancel </a>
   </div>
   <% } else if (currUser && listing.watchlist && listing.watchlist.includes(currUser._id)) {  %>
     <div class="btns mt-3 ">  
